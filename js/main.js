@@ -229,6 +229,16 @@
     });
   });
 
+  /* ---------- FAQ: one question open at a time (details[name] does it natively; fallback for older browsers) ---------- */
+  document.querySelectorAll("details[name]").forEach(function (d) {
+    d.addEventListener("toggle", function () {
+      if (!d.open) return;
+      document.querySelectorAll('details[name="' + d.getAttribute("name") + '"]').forEach(function (o) {
+        if (o !== d && o.open) o.open = false;
+      });
+    });
+  });
+
   /* ---------- Mobile menu ---------- */
   var toggle = document.querySelector(".nav-toggle");
   var nav = document.getElementById("main-nav");
