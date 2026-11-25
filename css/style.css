@@ -1070,12 +1070,17 @@ main.legal-page { padding: 0; }
 .legal-body .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 /* ==========================================================
-   Texture on the dark sections: crumpled paper + fine grain,
-   blended over the teal so the colour itself does not change.
+   Depth on the dark sections: a soft light from the top corner
+   plus fine film grain (overlay, so the teal itself stays).
    ========================================================== */
-.journey, .about { position: relative; isolation: isolate; }
+.journey, .about {
+  position: relative; isolation: isolate;
+  background-image:
+    radial-gradient(120% 90% at 85% 0%, rgba(115, 147, 116, .28), transparent 60%),
+    radial-gradient(90% 80% at 0% 100%, rgba(0, 0, 0, .22), transparent 65%);
+}
 .journey::before, .about::before {
   content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; border-radius: inherit;
-  background: url("../assets/tex/crumple.jpg") 0 0 / 1024px, url("../assets/tex/grain.jpg") 0 0 / 180px;
-  mix-blend-mode: overlay; opacity: .35;
+  background: url("../assets/tex/film.jpg") 0 0 / 256px;
+  mix-blend-mode: overlay; opacity: .18;
 }
