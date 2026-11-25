@@ -1068,3 +1068,14 @@ main.legal-page { padding: 0; }
 @media (max-width: 900px) { .legal-body table { font-size: 13px; } }
 .legal-body .policy-table-wrap { overflow-x: auto; }
 .legal-body .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ==========================================================
+   Texture on the dark sections: crumpled paper + fine grain,
+   blended over the teal so the colour itself does not change.
+   ========================================================== */
+.journey, .about { position: relative; isolation: isolate; }
+.journey::before, .about::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; border-radius: inherit;
+  background: url("../assets/tex/crumple.jpg") 0 0 / 1024px, url("../assets/tex/grain.jpg") 0 0 / 180px;
+  mix-blend-mode: overlay; opacity: .35;
+}
